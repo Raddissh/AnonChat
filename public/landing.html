@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Anon Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="form-container">
+    <h2>Get Started</h2>
+    <form id="landing-form">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="non-binary">Non-Binary</option>
+            <option value="prefer-not-to-say">Prefer Not to Say</option>
+        </select>
+
+        <label for="interests">Your Interests</label>
+        <textarea id="interests" name="interests" placeholder="List your interests separated by commas" required></textarea>
+
+        <label>
+            <input type="checkbox" id="age-confirmation" name="age-confirmation" required> I confirm I am 18+ years old.
+        </label>
+
+        <label>
+            <input type="checkbox" id="terms-acceptance" name="terms-acceptance" required> I agree to the <a href="#">terms and conditions</a>.
+        </label>
+
+        <button type="submit">Start Chatting</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('landing-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get values
+        const gender = document.getElementById('gender').value;
+        const interests = document.getElementById('interests').value;
+        const ageConfirmed = document.getElementById('age-confirmation').checked;
+        const termsAccepted = document.getElementById('terms-acceptance').checked;
+
+        // Ensure all fields are filled
+        if (gender && interests && ageConfirmed && termsAccepted) {
+            // Store user data in session storage
+            sessionStorage.setItem('userGender', gender);
+            sessionStorage.setItem('userInterests', interests);
+
+            // Redirect to the chat page
+            window.location.href = '/chat.html';
+        } else {
+            alert('Please fill all the fields and accept the terms.');
+        }
+    });
+</script>
+
+</body>
+</html>

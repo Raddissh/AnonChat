@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anon Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="main-container">
+    <div id="chat-box"></div>
+    <div id="typing-indicator" style="display: none;">Stranger is typing...</div>
+
+    <div id="controls">
+        <input type="text" id="message-input" placeholder="Type your message here...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <div id="file-upload">
+        <input type="file" id="file-input" accept="image/*,video/*,audio/*">
+        <label for="file-input" id="file-label">Choose File</label>
+        <button id="send-file-button">Send File</button>
+    </div>
+
+    <div id="actions">
+        <button id="new-chat">New Chat</button>
+        <button id="end-chat">End Chat</button>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
